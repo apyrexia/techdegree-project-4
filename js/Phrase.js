@@ -8,12 +8,18 @@ class Phrase {
   }
   // Display phrase on game board
   addPhraseToDisplay() {
-    const placeholders = document.getElementById('phrase')
+    const div = document.getElementById('phrase');
+    const placeholders = div.querySelector('ul');
+    for (let i = 0; i < this.phrase.length; i++) {
+      const char = this.phrase.charAt(i);
+      const li = document.createElement('li');
+        if (char !== ' ') {
+          li.className = `hide letter ${char}`;
+        } else if (char === ' ') {
+          li.className = "space";
+        }
+        li.textContent = char;
+      placeholders.appendChild(li);
+    }
   }
-  // checkLetter() {
-
-  // }
-  // showMatchedLetter() {
-
-  // }
 }

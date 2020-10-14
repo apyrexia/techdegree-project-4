@@ -6,6 +6,5 @@
 //  console.log(`Phrase - phrase: ${phrase.phrase}`)
 
 const game = new Game()
-game.createPhrases('poop is as poop does', 'meow meow', 'IDK what Im doing', `pee poo poo was a good pig`, `is math related to science`)
-game.getRandomPhrase();
-console.log(game1.getRandomPhrase());
+game.createPhrases('Get cracking', 'meow meow', 'IDK what Im doing', `pee pee poo poo was a good pig`, `is math related to science`)
+game.getRandomPhrase().addPhraseToDisplay();
