@@ -30,6 +30,17 @@
     this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
    }
+   //Checks for winning move
+   checkForWin() {
+    const letters = document.getElementById('phrase').querySelector('ul').querySelectorAll('li');
+    for (let i = 0; i < letters.length; i++) {
+      if (letters[i].className === `hide letter ${letters[i].textContent}`) {
+        return false;
+      } else if (i > letters.length) {
+        return true;
+      }
+    }
+   }
    handleInteraction() {
 
    }
