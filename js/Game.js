@@ -18,10 +18,20 @@
     ];
      return this.phrases;
    }
-   getRandomPhrase(){
+   getRandomPhrase() {
     const randNum = Math.floor(Math.random() * Math.floor(5));
     const randomPhrase = new Phrase(this.phrases[randNum].phrase);
     return randomPhrase;
+   }
+   //Begins game by selecting a random phrase and displaying it to the user
+   startGame() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay();
+   }
+   handleInteraction() {
+     
    }
  }
 

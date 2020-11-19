@@ -5,6 +5,11 @@
 //  const phrase = new Phrase('Life is like a box of chocolates');
 //  console.log(`Phrase - phrase: ${phrase.phrase}`)
 
-const game = new Game()
-game.createPhrases('Get cracking', 'meow meow', 'IDK what Im doing', `pee pee poo poo was a good pig`, `is math related to science`)
-game.getRandomPhrase().addPhraseToDisplay();
+//listens on the start button to create the game and start it
+
+let game = undefined;
+document.getElementById('btn__reset').addEventListener("click", () => {
+  game = new Game()
+  game.createPhrases('Hear, hear', 'Dont Count Your Chickens Before They Hatch', 'IDK what Im doing', `par for the course`, `is math related to science`);
+  game.startGame();
+});
