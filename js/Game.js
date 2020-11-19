@@ -31,7 +31,7 @@
     this.activePhrase.addPhraseToDisplay();
    }
    handleInteraction() {
-     
+
    }
  }
 

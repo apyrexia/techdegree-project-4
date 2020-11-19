@@ -22,12 +22,9 @@ class Phrase {
       placeholders.appendChild(li);
     }
   }
-  /**
-  * Checks if passed letter is in phrase
-  * @param (string) letter - Letter to check
-  */
+//Checks if passed letter is in phrase
   checkLetter(letter) {
-    for (i = 0; i < this.phrase.length; i++) {
+    for (let i = 0; i < this.phrase.length; i++) {
       if (letter === this.phrase.charAt(i)) {
         return true;
       }
@@ -35,6 +32,12 @@ class Phrase {
         return false;
       }
     }
-    
+  }
+  //Displays passed letter on screen after a match is found
+  showMatchedLetter(letter) {
+    const matches = document.getElementsByClassName(`hide letter ${letter}`);
+    for (let i = 0; i < matches.length; i++) {
+      matches[i].className = ' ';
+    }
   }
 }
