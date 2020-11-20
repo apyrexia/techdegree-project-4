@@ -24,11 +24,11 @@ class Phrase {
   }
 //Checks if passed letter is in phrase
   checkLetter(letter) {
-    for (let i = 0; i < this.phrase.length; i++) {
+    for (let i = 0; i <= this.phrase.length; i++) {
       if (letter === this.phrase.charAt(i)) {
         return true;
       }
-      else if (i > this.phrase.length) {
+      else if (i >= this.phrase.length) {
         return false;
       }
     }
