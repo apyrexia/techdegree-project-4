@@ -35,9 +35,12 @@ class Phrase {
   }
   //Displays passed letter on screen after a match is found
   showMatchedLetter(letter) {
-    const matches = document.getElementsByClassName(`hide letter ${letter}`);
-    for (let i = 0; i < matches.length; i++) {
-      matches[i].className = ' ';
+    const characters = document.getElementById('phrase').querySelector('ul').querySelectorAll('li');
+    for (let i = 0; i < characters.length; i++) {
+      if (characters[i].innerText === letter) {
+        characters[i].style.color = 'black';
+        characters[i].classList = `hide letter ${letter} matched`;
+      }
     }
   }
 }

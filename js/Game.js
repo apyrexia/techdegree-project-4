@@ -33,13 +33,13 @@ class Game {
   //Checks for winning move
   checkForWin() {
     const letters = document.getElementById('phrase').querySelector('ul').querySelectorAll('li');
+    let result = true;
     for (let i = 0; i < letters.length; i++) {
-      if (letters[i].className === `hide letter ${letters[i].textContent}`) {
-        return false;
-      } else if (i > letters.length) {
-        return true;
+      if (!letters[i].classList.contains("matched") && !letters[i].classList.contains("space")) {
+        result = false;
       }
     }
+    return result;
   }
   //Increases the value of the missed property
   //Removes a life from the scoreboard

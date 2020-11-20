@@ -10,6 +10,7 @@
 let game = undefined;
 document.getElementById('btn__reset').addEventListener("click", () => {
   game = new Game()
-  game.createPhrases('Hear hear', 'Dont Count Your Chickens Before They Hatch', 'IDK what Im doing', `par for the course`, `is math related to science`);
+  // game.createPhrases('Hear hear', 'Dont Count Your Chickens Before They Hatch', 'IDK what Im doing', `par for the course`, `is math related to science`);
+  game.createPhrases('pee pee', 'pee pee', 'pee pee', 'pee pee', 'pee pee')
   game.startGame();
 });
