@@ -25,6 +25,26 @@ class Game {
   }
   //Begins game by selecting a random phrase and displaying it to the user
   startGame() {
+    //Resets board
+    this.missed = 0;
+    const div = document.getElementById('phrase');
+    const ul = div.querySelector('ul');
+    if (ul.firstChild) {
+      const previousChars = ul.querySelectorAll('li');
+      for (let i = 0; i < previousChars.length; i++) {
+        previousChars[i].remove();
+      }
+    }
+    const tries = document.getElementById('scoreboard').querySelector('ol');
+    if (!tries.firstChild) {
+      for (let i = 0; i < 5; i++) {
+        const heart = document.createElement('li');
+          heart.className = "tries";
+          heart.innerHTML = '<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30">'
+          tries.appendChild(heart);
+      }
+    }
+    //Starts game
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
     this.activePhrase = this.getRandomPhrase();
@@ -49,22 +69,34 @@ class Game {
     const tries = document.getElementById('scoreboard').querySelector('ol');
     tries.removeChild(tries.lastElementChild);
     if (this.missed >= 5) {
-      this.gameOver();
+      this.gameOver(false);
     }
   }
   //Displays game over message
-  gameOver() {
+  gameOver(gameWon) {
     const overlay = document.getElementById('overlay');
-    const gameOverMessage = document.createElement('h1');
-    gameOverMessage.textContent = 'GAME OVER';
-    gameOverMessage.style.color = 'red';
-    overlay.appendChild(gameOverMessage);
-    const tryAgain = document.getElementById('btn__reset');
-    tryAgain.textContent = 'Try Again';
-    overlay.style.display = '';
+    const gameOverMessage = document.getElementById("game-over-message");
+    if (gameWon === false) {
+      gameOverMessage.textContent = 'Sorry, better luck next time!';
+      overlay.style.backgroundColor = '#DD5454';
+      overlay.style.display = '';
+    } else if (gameWon === true) {
+      gameOverMessage.textContent = 'Great job!';
+      overlay.style.backgroundColor = '#7BD670';
+      overlay.style.display = '';
+    }
   }
-  handleInteraction() {
-
+  //Handles onscreen keyboard button clicks
+  //@param (HTMLButtonElement) button - The clicked button element
+  handleInteraction(button) {
+    if (this.activePhrase.checkLetter(button.textContent) === true) {
+      this.activePhrase.showMatchedLetter(button.textContent);
+      if (this.checkForWin()) {
+        setTimeout( () => this.gameOver(true), 800);
+      }
+    } else if (this.activePhrase.checkLetter(button.textContent) === false) {
+      this.removeLife();
+    }
   }
  }
 

@@ -8,9 +8,36 @@
 //listens on the start button to create the game and start it
 
 let game = undefined;
+
 document.getElementById('btn__reset').addEventListener("click", () => {
   game = new Game()
-  // game.createPhrases('Hear hear', 'Dont Count Your Chickens Before They Hatch', 'IDK what Im doing', `par for the course`, `is math related to science`);
-  game.createPhrases('pee pee', 'pee pee', 'pee pee', 'pee pee', 'pee pee')
+  game.createPhrases('Actions speak louder than words', 'A watched pot never boils', 'Beggars cant be choosers', `Dont judge a book by its cover`, `Fortune favors the bold`);
+  // game.createPhrases('pee pee', 'pee pee', 'pee pee', 'pee pee', 'pee pee')
   game.startGame();
 });
+
+//Game event handler for key clicks
+function keysClick() {
+  const qwerty = document.getElementById('qwerty');
+  qwerty.addEventListener("click", function (e) {
+    if (e.target.className === "key") {
+      game.handleInteraction(e.target);
+    }
+  });
+}
+//Cosmetic page interactivity
+function keysMouseover() {
+  const qwerty = document.getElementById('qwerty');
+  qwerty.addEventListener("mouseover", function (e) {
+    if (e.target.className === "key") {
+      e.target.style.backgroundColor = '#cccccc';
+    }
+  });
+  qwerty.addEventListener("mouseout", function (e) {
+    if (e.target.className === "key") {
+      e.target.style.backgroundColor = '#E5E5E5';
+    }
+  });
+}
+keysClick();
+keysMouseover();

@@ -9,7 +9,7 @@ class Phrase {
   // Display phrase on game board
   addPhraseToDisplay() {
     const div = document.getElementById('phrase');
-    const placeholders = div.querySelector('ul');
+    const ul = div.querySelector('ul');
     for (let i = 0; i < this.phrase.length; i++) {
       const char = this.phrase.charAt(i);
       const li = document.createElement('li');
@@ -19,7 +19,7 @@ class Phrase {
           li.className = "space";
         }
         li.textContent = char;
-      placeholders.appendChild(li);
+      ul.appendChild(li);
     }
   }
 //Checks if passed letter is in phrase
@@ -39,6 +39,7 @@ class Phrase {
     for (let i = 0; i < characters.length; i++) {
       if (characters[i].innerText === letter) {
         characters[i].style.color = 'black';
+        characters[i].style.backgroundColor = '#7BD670';
         characters[i].classList = `hide letter ${letter} matched`;
       }
     }
