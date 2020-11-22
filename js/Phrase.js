@@ -21,7 +21,7 @@ class Phrase {
       ul.appendChild(li);
     }
   }
-//Checks if passed letter is in phrase
+  //Checks if passed letter is in phrase
   checkLetter(letter) {
     for (let i = 0; i <= this.phrase.length; i++) {
       if (letter === this.phrase.charAt(i)) {
