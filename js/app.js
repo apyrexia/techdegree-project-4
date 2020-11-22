@@ -25,18 +25,18 @@ function keysClick() {
   });
 }
 //Cosmetic page interactivity
-function keysMouseover() {
-  const qwerty = document.getElementById('qwerty');
-  qwerty.addEventListener("mouseover", function (e) {
-    if (e.target.className === "key") {
-      e.target.style.backgroundColor = '#cccccc';
-    }
-  });
-  qwerty.addEventListener("mouseout", function (e) {
-    if (e.target.className === "key") {
-      e.target.style.backgroundColor = '#E5E5E5';
-    }
-  });
-}
+// function keysMouseover() {
+//   const qwerty = document.getElementById('qwerty');
+//   qwerty.addEventListener("mouseover", function (e) {
+//     if (e.target.className === "key") {
+//       e.target.style.backgroundColor = '#cccccc';
+//     }
+//   });
+//   qwerty.addEventListener("mouseout", function (e) {
+//     if (e.target.className === "key") {
+//       e.target.style.backgroundColor = '#E5E5E5';
+//     }
+//   });
+// }
 keysClick();
-keysMouseover();
+// keysMouseover();

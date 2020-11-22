@@ -35,15 +35,15 @@ class Game {
         previousChars[i].remove();
       }
     }
-    const tries = document.getElementById('scoreboard').querySelector('ol'); //Restores hearts if they're missing
-    if (tries.children.length < 5) {
-      for (let i = 0; i = 5 - tries.children.length; i++) {
-        const heart = document.createElement('li');
-          heart.className = "tries";
-          heart.innerHTML = '<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30">'
-          heart.style.padding = '2px';
-          tries.appendChild(heart);
-      }
+    const tries = document.getElementById('scoreboard').querySelector('ol').querySelectorAll('li'); //Restores hearts if they're missing
+    for (let i = 0; i < tries.length; i++) {
+        tries[i].innerHTML = '<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30">';
+    }
+    
+    const keys = document.getElementById('qwerty').querySelectorAll('button'); // re-enables keys and resets background colors
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].disabled = false;
+      keys[i].className = "key";
     }
     //Starts game
     const overlay = document.getElementById('overlay');
@@ -67,10 +67,12 @@ class Game {
   //Checks if player has remaining lives and ends game if player is out
   removeLife() {
     this.missed += 1;
-    const tries = document.getElementById('scoreboard').querySelector('ol');
-    tries.removeChild(tries.lastElementChild);
+    const tries = document.getElementById('scoreboard').querySelector('ol').querySelectorAll('li');
+    for (let i = 0; i < this.missed; i++) {
+      tries[i].innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30"></img>';
+      tries[i].className = "lost";
+    }
     if (this.missed >= 5) {
-      tries.textContent = ''; //Removes all nodes to prepare for conditional in the startGame method
       this.gameOver(false);
     }
   }
@@ -80,24 +82,27 @@ class Game {
     const gameOverMessage = document.getElementById("game-over-message");
     if (gameWon === false) {
       gameOverMessage.textContent = 'Sorry, better luck next time!';
-      overlay.style.backgroundColor = '#DD5454';
+      overlay.className = "lose";
       overlay.style.display = '';
     } else if (gameWon === true) {
       gameOverMessage.textContent = 'Great job!';
-      overlay.style.backgroundColor = '#7BD670';
+      overlay.className = "win";
       overlay.style.display = '';
     }
   }
   //Handles onscreen keyboard button clicks
   //@param (HTMLButtonElement) button - The clicked button element
   handleInteraction(button) {
+    button.disabled = true;
     if (this.activePhrase.checkLetter(button.textContent) === true) {
       this.activePhrase.showMatchedLetter(button.textContent);
+      button.className = "chosen";
       if (this.checkForWin()) {
-        setTimeout( () => this.gameOver(true), 800);
+        setTimeout( () => this.gameOver(true), 500);
       }
     } else if (this.activePhrase.checkLetter(button.textContent) === false) {
       this.removeLife();
+      button.className = "wrong";
     }
   }
  }

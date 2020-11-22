@@ -37,9 +37,7 @@ class Phrase {
     const characters = document.getElementById('phrase').querySelector('ul').querySelectorAll('li');
     for (let i = 0; i < characters.length; i++) {
       if (characters[i].innerText === letter) {
-        characters[i].style.color = 'black';
-        characters[i].style.backgroundColor = '#7BD670';
-        characters[i].classList = `hide letter ${letter} matched`;
+        characters[i].classList = `hide letter ${letter} matched show`;
       }
     }
   }
