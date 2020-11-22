@@ -12,7 +12,6 @@ let game = undefined;
 document.getElementById('btn__reset').addEventListener("click", () => {
   game = new Game()
   game.createPhrases('Actions speak louder than words', 'A watched pot never boils', 'Beggars cant be choosers', `Dont judge a book by its cover`, `Fortune favors the bold`);
-  // game.createPhrases('pee pee', 'pee pee', 'pee pee', 'pee pee', 'pee pee')
   game.startGame();
 });
 

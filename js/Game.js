@@ -27,7 +27,7 @@ class Game {
   startGame() {
     //Resets board
     this.missed = 0;
-    const div = document.getElementById('phrase');
+    const div = document.getElementById('phrase'); //Removes any remaining characters from previous game
     const ul = div.querySelector('ul');
     if (ul.firstChild) {
       const previousChars = ul.querySelectorAll('li');
@@ -35,12 +35,13 @@ class Game {
         previousChars[i].remove();
       }
     }
-    const tries = document.getElementById('scoreboard').querySelector('ol');
-    if (!tries.firstChild) {
-      for (let i = 0; i < 5; i++) {
+    const tries = document.getElementById('scoreboard').querySelector('ol'); //Restores hearts if they're missing
+    if (tries.children.length < 5) {
+      for (let i = 0; i = 5 - tries.children.length; i++) {
         const heart = document.createElement('li');
           heart.className = "tries";
           heart.innerHTML = '<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30">'
+          heart.style.padding = '2px';
           tries.appendChild(heart);
       }
     }
@@ -69,6 +70,7 @@ class Game {
     const tries = document.getElementById('scoreboard').querySelector('ol');
     tries.removeChild(tries.lastElementChild);
     if (this.missed >= 5) {
+      tries.textContent = ''; //Removes all nodes to prepare for conditional in the startGame method
       this.gameOver(false);
     }
   }

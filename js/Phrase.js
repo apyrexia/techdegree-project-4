@@ -8,8 +8,7 @@ class Phrase {
   }
   // Display phrase on game board
   addPhraseToDisplay() {
-    const div = document.getElementById('phrase');
-    const ul = div.querySelector('ul');
+    const ul = document.getElementById('phrase').querySelector('ul');
     for (let i = 0; i < this.phrase.length; i++) {
       const char = this.phrase.charAt(i);
       const li = document.createElement('li');
