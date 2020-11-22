@@ -5,22 +5,23 @@
 class Game {
   constructor(missed = 0, phrases = [], activePhrase = null) {
     this.missed = missed;
-    this.phrases = this.createPhrases;
+    this.phrases = this.createPhrases();
     this.activePhrase = activePhrase;
   }
-  createPhrases(phrase1, phrase2, phrase3, phrase4, phrase5) {
+  createPhrases() {
     this.phrases = [
-    {phrase: phrase1}, 
-    {phrase: phrase2}, 
-    {phrase: phrase3}, 
-    {phrase: phrase4}, 
-    {phrase: phrase5}
+    {phrase: 'Actions speak louder than words'}, 
+    {phrase: 'A watched pot never boils'}, 
+    {phrase: 'Beggars cant be choosers'}, 
+    {phrase: `Dont judge a book by its cover`}, 
+    {phrase: `Fortune favors the bold`}
   ];
+    this.phrases = new Phrase(this.getRandomPhrase());
     return this.phrases;
   }
   getRandomPhrase() {
     const randNum = Math.floor(Math.random() * Math.floor(5));
-    const randomPhrase = new Phrase(this.phrases[randNum].phrase);
+    const randomPhrase = this.phrases[randNum].phrase;
     return randomPhrase;
   }
   //Begins game by selecting a random phrase and displaying it to the user
@@ -48,7 +49,7 @@ class Game {
     //Starts game
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
-    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase = this.phrases;
     this.activePhrase.addPhraseToDisplay();
   }
   //Checks for winning move

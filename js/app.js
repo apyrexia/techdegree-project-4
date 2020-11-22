@@ -11,12 +11,11 @@ let game = undefined;
 
 document.getElementById('btn__reset').addEventListener("click", () => {
   game = new Game()
-  game.createPhrases('Actions speak louder than words', 'A watched pot never boils', 'Beggars cant be choosers', `Dont judge a book by its cover`, `Fortune favors the bold`);
   game.startGame();
 });
 
 //Game event handler for key clicks
-function keysClick() {
+function keyClicks() {
   const qwerty = document.getElementById('qwerty');
   qwerty.addEventListener("click", function (e) {
     if (e.target.className === "key") {
@@ -24,4 +23,4 @@ function keysClick() {
     }
   });
 }
-keysClick();
+keyClicks();
