@@ -10,18 +10,17 @@ class Game {
   }
   createPhrases() {
     this.phrases = [
-    {phrase: 'Actions speak louder than words'}, 
-    {phrase: 'A watched pot never boils'}, 
-    {phrase: 'Beggars cant be choosers'}, 
-    {phrase: `Dont judge a book by its cover`}, 
-    {phrase: `Fortune favors the bold`}
+    new Phrase('Actions speak louder than words'),  
+    new Phrase('A watched pot never boils'), 
+    new Phrase('Beggars cant be choosers'), 
+    new Phrase(`Dont judge a book by its cover`), 
+    new Phrase(`Fortune favors the bold`)
   ];
-    this.phrases = new Phrase(this.getRandomPhrase());
     return this.phrases;
   }
   getRandomPhrase() {
     const randNum = Math.floor(Math.random() * Math.floor(5));
-    const randomPhrase = this.phrases[randNum].phrase;
+    const randomPhrase = this.phrases[randNum];
     return randomPhrase;
   }
   //Begins game by selecting a random phrase and displaying it to the user
@@ -49,7 +48,7 @@ class Game {
     //Starts game
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
-    this.activePhrase = this.phrases;
+    this.activePhrase = this.getRandomPhrase();
     this.activePhrase.addPhraseToDisplay();
   }
   //Checks for winning move
