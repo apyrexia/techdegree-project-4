@@ -18,6 +18,7 @@ class Game {
   ];
     return this.phrases;
   }
+  //Returns a random phrase from this.phrases
   getRandomPhrase() {
     const randNum = Math.floor(Math.random() * Math.floor(5));
     const randomPhrase = this.phrases[randNum];
